@@ -1,5 +1,4 @@
 import React, { useState, useEffect, ChangeEvent, KeyboardEvent } from "react";
-import "./style.css";
 
 interface ChatRoomProps {
   username: string;
@@ -21,6 +20,7 @@ const generateUniqueId = (): string => {
 const ChatRoom: React.FC<ChatRoomProps> = ({ username }) => {
   const [ws, setWs] = useState<WebSocket | null>(null);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [activeUsers, setActiveUsers] = useState<string[]>([]);
   const [input, setInput] = useState<string>("");
 
   useEffect(() => {
@@ -70,6 +70,8 @@ const ChatRoom: React.FC<ChatRoomProps> = ({ username }) => {
                 : msg
             )
           );
+        } else if (data.type === "activeUsers") {
+          setActiveUsers(data.users);
         }
       } catch (err) {
         console.error("Error parsing message", err);
@@ -139,52 +141,74 @@ const ChatRoom: React.FC<ChatRoomProps> = ({ username }) => {
   };
 
   return (
-    <div className="chat-room">
-      <div className="chat-room-header">Status Meeting Standup</div>
-      <div className="messages-container">
-        {messages.map((msg) => (
-          <div key={msg.id} className="message">
-            {msg.type === "notification" ? (
-              <em>{msg.content}</em>
-            ) : (
-              <>
-                <strong>{msg.username}: </strong>
-                <span>{msg.content}</span>
-                {msg.username === username && !msg.deleted && (
-                  <>
-                    <button
-                      onClick={() => handleEdit(msg.id, msg.content)}
-                      className="edit-button"
-                    >
-                      Edit
-                    </button>
-                    <button
-                      onClick={() => handleDelete(msg.id)}
-                      className="delete-button"
-                    >
-                      Delete
-                    </button>
-                  </>
-                )}
-                {msg.edited && !msg.deleted && (
-                  <div className="edited-info">This message was edited</div>
-                )}
-              </>
-            )}
-          </div>
-        ))}
+    <div style={{ display: "flex", width: "100%" }}>
+      <div style={{ flex: 3, padding: "10px" }}>
+        <h2>Chatroom</h2>
+        <div
+          style={{
+            border: "1px solid #ccc",
+            height: "300px",
+            overflowY: "scroll",
+            padding: "10px",
+            marginBottom: "10px",
+          }}
+        >
+          {messages.map((msg) => (
+            <div key={msg.id} style={{ marginBottom: "15px" }}>
+              {msg.type === "notification" ? (
+                <em>{msg.content}</em>
+              ) : (
+                <>
+                  <strong>{msg.username}: </strong>
+                  <span>{msg.content}</span>
+                  {msg.username === username && !msg.deleted && (
+                    <>
+                      <button
+                        onClick={() => handleEdit(msg.id, msg.content)}
+                        style={{ marginLeft: "10px" }}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        onClick={() => handleDelete(msg.id)}
+                        style={{ marginLeft: "5px" }}
+                      >
+                        Delete
+                      </button>
+                    </>
+                  )}
+                  {msg.edited && !msg.deleted && (
+                    <div style={{ fontSize: "0.8em", color: "#888" }}>
+                      This message was edited
+                    </div>
+                  )}
+                </>
+              )}
+            </div>
+          ))}
+        </div>
+        <input
+          type="text"
+          value={input}
+          onChange={handleInputChange}
+          placeholder="Type a message..."
+          onKeyPress={handleKeyPress}
+          style={{ width: "75%", padding: "8px" }}
+        />
+        <button onClick={sendMessage} style={{ padding: "8px", width: "20%" }}>
+          Send
+        </button>
       </div>
-      <input
-        type="text"
-        value={input}
-        onChange={handleInputChange}
-        placeholder="Type a message..."
-        onKeyPress={handleKeyPress}
-        className="chat-input"
-      />
-      <button onClick={sendMessage} className="send-button">
-        Send
-      </button>
+      <div style={{ flex: 1, padding: "10px", borderLeft: "1px solid #ccc" }}>
+        <h3>Active Users</h3>
+        <ul style={{ listStyleType: "none", padding: 0 }}>
+          {activeUsers.map((user, index) => (
+            <li key={index} style={{ marginBottom: "8px" }}>
+              {user}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
