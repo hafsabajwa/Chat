@@ -173,24 +173,28 @@ const ChatRoom: React.FC<ChatRoomProps> = ({ username }) => {
                     <em>{msg.content}</em>
                   ) : (
                     <>
-                      <strong>{msg.username}: </strong>
-                      <span>{msg.content}</span>
-                      {msg.username === username && !msg.deleted && (
-                        <>
-                          <button
-                            onClick={() => handleEdit(msg.id, msg.content)}
-                            className="edit-button"
-                          >
-                            Edit
-                          </button>
-                          <button
-                            onClick={() => handleDelete(msg.id)}
-                            className="delete-button"
-                          >
-                            Delete
-                          </button>
-                        </>
-                      )}
+                      <div className="message-content">
+                        <strong>{msg.username}: </strong>
+                        <span>{msg.content}</span>
+                      </div>
+                      <div>
+                        {msg.username === username && !msg.deleted && (
+                          <>
+                            <button
+                              onClick={() => handleEdit(msg.id, msg.content)}
+                              className="edit-button"
+                            >
+                              Edit
+                            </button>
+                            <button
+                              onClick={() => handleDelete(msg.id)}
+                              className="delete-button"
+                            >
+                              Delete
+                            </button>
+                          </>
+                        )}
+                      </div>
                       {msg.edited && !msg.deleted && (
                         <div className="edited-info">
                           This message was edited
