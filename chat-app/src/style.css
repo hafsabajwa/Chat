@@ -5,7 +5,6 @@
   width: 100%;
 }
 
-/* Header */
 .chat-room-header {
   padding: 10px;
   font-size: 1.2em;
@@ -13,11 +12,10 @@
   background-color: #dfdede;
 }
 
-/* Tabs */
 .tab-buttons {
   display: flex;
   background-color: #dfdede;
-  flex-wrap: wrap; /* Ensures wrapping on smaller screens */
+  flex-wrap: wrap;
 }
 
 .tab-button {
@@ -35,12 +33,10 @@
   background-color: white;
 }
 
-/* Chat content */
 .content {
   padding: 10px;
 }
 
-/* Messages */
 .messages-container {
   height: 300px;
   overflow-y: auto;
@@ -50,14 +46,12 @@
   border-radius: 5px;
 }
 
-/* Individual message */
 .message {
   margin-bottom: 15px;
   display: flex;
   flex-direction: column;
 }
 
-/* Buttons */
 .edit-button,
 .delete-button {
   margin-left: 10px;
@@ -67,13 +61,11 @@
   font-size: 0.9em;
 }
 
-/* Edited info */
 .edited-info {
   font-size: 0.8em;
   color: #888;
 }
 
-/* Input and send button */
 .chat-input {
   width: 75%;
   padding: 8px;
@@ -91,7 +83,6 @@
   cursor: pointer;
 }
 
-/* Active users list */
 .active-users-list {
   list-style-type: none;
   padding: 0;
@@ -101,7 +92,6 @@
   margin-bottom: 8px;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .tab-buttons {
     flex-direction: column;
