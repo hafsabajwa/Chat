@@ -1,4 +1,5 @@
 import WebSocket, { WebSocketServer } from 'ws';
+import "./style.css"
 
 interface MessageData {
   type: 'join' | 'leave' | 'chat' | 'edit' | 'delete';
