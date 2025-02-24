@@ -1,92 +1,52 @@
-.App {
-  text-align: center;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app-container {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  height: 100vh;
+  background-color: #f3f4f6;
+}
+
+.form-container {
+  background: white;
+  padding: 1rem 2.2rem 1rem 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 300px;
+}
+
+h2 {
+  margin-bottom: 15px;
+  font-size: 22px;
+  color: #333;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.input-field:focus {
+  border-color: #007bff;
+}
+
+.submit-button {
+  margin-top: 12px;
+  padding: 10px;
+  background-color: #007bff;
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-.status-container {
-  display: flex;
-  flex-direction: column;
-  background-color: rgb(226, 226, 223);
-  align-items: center;
-}
-
-.status-header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(226, 226, 223);
-  color: rgb(78, 78, 78);
-  width: 20em;
-  padding: 10px 0px 10px 0px;
-  margin-bottom: 0;
-}
-
-.status-list {
-  display: flex;
-  width: 20em;
-  
-  list-style-type: none;
-  background-color: rgb(226, 226, 223);
-  margin-top: -3px;
-  justify-content: center;
-  padding: 10px 0px 0px 0px;
-}
-
-.status-list a {
-  flex: 1; 
-  text-align: center;
-  padding: 10px 0px 10px 0px;
-  text-decoration: none;
-  color: rgb(78, 78, 78);
-  background-color: rgb(226, 226, 223); 
-}
-
-.status-list a.active {
-  background-color: white; 
-}
-
-.status-list a.active {
-  background-color: none;
-}
-.icon-button {
-  background: none;
   border: none;
+  border-radius: 8px;
+  font-size: 16px;
   cursor: pointer;
-  font-size: 10px;
-  padding: 3px;
-  border-radius: 5px;
-  transition: background 0.2s ease-in-out;
-  color: rgb(78, 78, 78);
+  transition: background 0.3s ease-in-out;
 }
 
-.icon-button:hover {
-  background: #ddd;
+.submit-button:hover {
+  background-color: #0056b3;
 }

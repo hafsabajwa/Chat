@@ -208,6 +208,7 @@ const ChatRoom: React.FC<ChatRoomProps> = ({ username }) => {
             <input
               type="text"
               value={input}
+              id="chat"
               onChange={handleInputChange}
               placeholder="Type a message..."
               onKeyPress={handleKeyPress}
