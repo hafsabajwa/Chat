@@ -39,25 +39,25 @@ it is recommended to use react 18.3.1
 
    For frontend:
    ```sh
-   cd frontend
+   cd chat-app
    npm install
    ```
 
    For backend:
    ```sh
-   cd backend
+   cd chat-server
    npm install
    ```
 
 3. **Start the WebSocket server**
    ```sh
-   cd backend
+   cd chat-server
    node --loader ts-node/esm server.ts
    ```
 
 4. **Start the React frontend**
    ```sh
-   cd frontend
+   cd chat-app
    npm start
    ```
 
